@@ -1,0 +1,16 @@
+library(shiny)
+
+source("my_script.R", local=TRUE)
+
+ui <- fluidPage(
+      tags$h1("New excel file")
+      actionButton(button, "Make file")
+      )
+
+server <- function(input, output) {
+          observeEvent(input$button, {
+             my_script()  # <-- Modified the call to the script
+             })
+          }
+
+shinyApp(ui=ui, server=server)

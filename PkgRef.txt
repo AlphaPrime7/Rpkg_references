@@ -1,0 +1,23 @@
+#Using knitr
+knitr::write_bib(c("data.table", "foreign", "tidyr", "tibble", "dplyr", "emojifont",
+                   "stats", "ggplot2", "ggthemes", "stringr"), width = 60, 
+                 file = "gratefulgod.bib")
+
+#For instant view
+toBibtex(citation("stats"))
+
+#Reproducible
+devtools::session_info()
+print(citation("weathercan"), style = "text")
+
+# A bunch with purr and base
+library(purrr)
+c("weathercan", "magick", "tidyhydat") %>%
+map(citation) %>%
+print(style = "text")
+
+#Rmarkdown way
+rmarkdown::render(input = "Scripts/02_analysis.R", output_dir = "Results", output_file = paste0("02_analysis_", Sys.Date(), '.html'))
+
+#what i used last time (grateful)
+grateful::cite_packages(output = c("file"), out.dir = getwd(), out.format = c("md"), pkgs = c("data.table","tidyr","foreign"))
