@@ -1,0 +1,47 @@
+---
+title: "R pkg references"
+output: html_notebook
+---
+
+## Using knitr
+```{r}
+knitr::write_bib(c("data.table", 
+                 "foreign", 
+                   "tidyr", 
+                   "tibble", 
+                   "dplyr", 
+                   "emojifont",
+                   "stats", 
+                   "ggplot2", 
+                   "ggthemes", 
+                   "stringr"), 
+                 width = 60, 
+                 file = "gratefulgod.bib")
+
+```
+
+## Utils
+```{r}
+#instant view
+utils::toBibtex(citation("stats"))
+```
+
+## Devtools
+```{r}
+#Session dependent
+devtools::session_info()
+print(citation("usethis"), style = "text")
+```
+## purr
+```{r}
+library(purrr)
+c("usethis", "magick", "tidyverse") %>%
+  map(citation) %>%
+  print(style = "text")
+```
+## used in normfluodbf
+```{r}
+grateful::cite_packages(output = c("file"), out.dir = getwd(), out.format = c("md"), pkgs = c("data.table","tidyr","foreign"))
+```
+
+
